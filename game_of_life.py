@@ -1,6 +1,6 @@
 import pygame
-import matplotlib
 import numpy as np
+import random
 
 cell_width = 20
 cell_height = 20
@@ -8,20 +8,24 @@ cell_height = 20
 BLACK = (0, 0, 0)
 WHITE = (200, 200, 200)
 
-class Cell:
-    def __init__(self, width, height, state):
-        self.width = width
-        self.height = height
-        self.state = state
-    def change_state(self, state, color):
-        if (self.state == 1):
-            self.state = 0
-            self.color = pygame.Color('white')
-        elif(self.state == 0):
-            self.state = 1
-            self.color = pygame.Color('black')
-        else:
-            print("ERROR")
+def random_population(matrix):
+    for cell in range(population):
+        i = random.randrange(a - 1)
+        j = random.randrange(b - 1)
+        while matrix[i][j] == 1:
+            i = random.randrange(a - 1)
+            j = random.randrange(b - 1)
+        print(i, j)
+        matrix[i][j] = 1
+
+def grid(matrix, s, x, y):
+    for i in range(0, x - 1):
+        for j in range(0, y - 1):
+            rect = pygame.Rect(i*s, j*s, s, s)
+            if(board[i][j] == 1):
+                pygame.draw.rect(SCREEN, BLACK, rect)
+            else:
+                pygame.draw.rect(SCREEN, WHITE, rect)
 
 #def count_neighbourhoods(matrix[i][j])
 
@@ -32,37 +36,28 @@ pygame.init()
 
 #a = int(input("Number of cells horizontal: "))
 #b = int(input("Number of cells vertical: "))
-a = 30
-b = 30
+a = 300
+b = 300
+
+size = 1000/a
+
+#population = int(input("Number of alive cells at the start: "))
+population = 100
 
 board = np.zeros((int(a), int(b)))
-board[15, 15] = 1
-board[15, 16] = 1
-board[14, 16] = 1
-board[16, 16] = 1
-board[15, 17] = 1
-print(board)
+random_population(board)
 
-def grid(matrix):
-    size = 20
-    for x in range(0, a, size):
-        for y in range(0, b, size):
-            rect = pygame.Rect(x*size, y*size, size, size)
-            if(board[x][y] == 1):
-                pygame.draw.rect(SCREEN, BLACK, rect)
-            else:
-                pygame.draw.rect(SCREEN, BLACK, rect)
-
-SCREEN = pygame.display.set_mode((a*20, b*20))
+SCREEN = pygame.display.set_mode((1000, 1000))
 pygame.display.set_caption("Conway\'s Game of Life")
 
 running = True
 while running:
     SCREEN.fill(WHITE)
-    grid(board)
+    grid(board, size, a, b)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
     pygame.display.flip()
 
 pygame.quit()
