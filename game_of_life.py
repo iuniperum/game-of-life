@@ -55,15 +55,12 @@ def determine_state(matrix, x, y):
 
 pygame.init()
 
-#a = int(input("Number of cells horizontal: "))
-#b = int(input("Number of cells vertical: "))
-a = 30
-b = 30
+a = int(input("Number of cells horizontal: "))
+b = int(input("Number of cells vertical: "))
 
 size = 1000/a
 
-#population = int(input("Number of alive cells at the start: "))
-population = 200
+population = int(input("Number of alive cells at the start: "))
 
 board = np.zeros((int(a), int(b)))
 random_population(board)
@@ -81,7 +78,7 @@ while running:
     new_board = board.copy()
     determine_state(new_board, a, b)
     board = new_board.copy()
-    time.sleep(1)
+    time.sleep(0.07)
     pygame.display.flip()
 
 pygame.quit()
