@@ -16,7 +16,6 @@ def random_population(matrix):
         while matrix[i][j] == 1:
             i = random.randrange(a - 1)
             j = random.randrange(b - 1)
-        print(i, j)
         matrix[i][j] = 1
 
 def grid(matrix, s, x, y):
@@ -47,20 +46,22 @@ def determine_state(matrix, x, y):
         for j in range(0, y):
             curr_state = matrix[i][j]
             alive_neigh = count_alive(matrix, i, j)
-            print(alive_neigh)
             if curr_state == 1 and (alive_neigh < 2 or alive_neigh > 3):
-                matrix[i][j] = 0
+                new_board[i][j] = 0
             if curr_state == 0 and alive_neigh == 3:
-                matrix[i][j] = 1
+                new_board[i][j] = 1
 
 pygame.init()
 
-a = int(input("Number of cells horizontal: "))
-b = int(input("Number of cells vertical: "))
+#a = int(input("Number of cells horizontal: "))
+#b = int(input("Number of cells vertical: "))
+a = 70
+b = 70
 
 size = 1000/a
 
-population = int(input("Number of alive cells at the start: "))
+#population = int(input("Number of alive cells at the start: "))
+population = 250
 
 board = np.zeros((int(a), int(b)))
 random_population(board)
