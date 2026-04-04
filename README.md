@@ -16,5 +16,5 @@ python game_of_life.py
 - Creating a grid
 - Determining locations of alive cells randomly
 - Start of the game - each iteration:
-- - Determining the state of all cells 
-- - Updating the grid
+ - Determining the state of all cells 
+ - Updating the grid
