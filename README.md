@@ -15,6 +15,4 @@ python game_of_life.py
 ### Pipeline
 - Creating a grid
 - Determining locations of alive cells randomly
-- Start of the game - each iteration:
- - Determining the state of all cells 
- - Updating the grid
+- Start of the game - each iteration determining the state of all cells and updating the grid
