@@ -10,8 +10,7 @@ This project implements a cellular automata known as Conway's Game of Life. It c
 Python, libraries: pygame, numpy, random, time
 
 ### How to run
-'''bash'''
-- python game_of_life.py
+python game_of_life.py
 
 ### Pipeline
 - Creating a grid
